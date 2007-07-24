@@ -18,28 +18,31 @@ This plugin adds class limit, available, and capacity methods to enforce quota l
 
 === Usage
 
-# plan attributes:
-# - name
-# - price
-# - item_limit
 class Plan < ActiveRecord::Base
   has_many :hosts
+
+  # plan attributes:
+  #   name
+  #   price
+  #   item_limit
 end
 
-# host attributes:
-# - name
-# - plan_id
 class Host < ActiveRecord::Base
   cattr_accessor :current
   belongs_to :plan
+
+  # host attributes:
+  #   name
+  #   plan_id
 end
 
-# item attributes
-# - name
-# - host_id
 class Item < ActiveRecord::Base
   limit_by_scope :host, :delegate => :plan, :error => 'Quota met: #{self.class.limit}, please upgrade your plan to add more.'
   belongs_to :host
+
+  # item attributes
+  #   name
+  #   host_id
 end
 
 # for best results, use with acts_as_scoped like so:
