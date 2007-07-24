@@ -1,0 +1,11 @@
+lite:
+  id: 1
+  name: Lite
+  item_limit: 3
+pro:
+  id: 2
+  name: Pro
+  item_limit: 20
+ultrasupermega:
+  id: 3
+  name: Ultra Super Mega

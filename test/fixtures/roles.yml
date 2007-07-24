@@ -1,0 +1,9 @@
+role_1:
+  id: 1
+  name: 'Admin'
+role_2:
+  id: 2
+  name: 'User'
+role_3:
+  id: 3
+  name: 'Guest'

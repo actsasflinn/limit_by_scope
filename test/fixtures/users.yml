@@ -1,0 +1,19 @@
+user_1:
+  id: 1
+  name: 'Ron Paul'
+  description: 'Constitution'
+  account_id: 1
+  thing_limit: 4
+user_2:
+  id: 2
+  name: 'Tom Tancredo'
+  description: 'No amnesty'
+  account_id: 1
+  thing_limit: 4
+user_3:
+  id: 3
+  name: 'Condoleeza Rice'
+  description: 'Vulcan'
+  account_id: 3
+  thing_limit: 4
+  

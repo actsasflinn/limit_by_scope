@@ -1,0 +1,16 @@
+thing_1:
+  id: 1
+  name: 'Thing 1'
+  user_id: 1
+thing_2:
+  id: 2
+  name: 'Thing 2'
+  user_id: 1
+thing_3:
+  id: 3
+  name: 'The Cat In The Hat'
+  user_id: 2
+thing_4:
+  id: 4
+  name: 'Sally'
+  user_id: 2

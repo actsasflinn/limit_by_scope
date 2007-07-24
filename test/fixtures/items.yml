@@ -1,0 +1,20 @@
+item_1:
+  id: 1
+  name: 'Plane'
+  user_id: 1
+  host_id: 3
+item_2:
+  id: 2
+  name: 'Train'
+  user_id: 2
+  host_id: 3
+item_3:
+  id: 3
+  name: 'Automobile'
+  user_id: 2
+  host_id: 3
+item_4:
+  id: 4
+  name: 'Bike'
+  user_id: 2
+  host_id: 1

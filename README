@@ -1,0 +1,73 @@
+= limited_by_scope
+
+This plugin adds class limit, available, and capacity methods to enforce quota limits on the creation of models.  The plugin is primarily for use with the acts_as_scoped plugin (part of the saas project) because it otherwise enforces a flat limit on the creation of limited models.  If used with the acts_as_scoped plugin you can lock users to a scope such as host or domain then ensure they can only create the number object within their plan.  The Usage section below should explain a little better.
+
+== Resources
+
+=== Homepage
+
+* http://www.actsasflinn.com/articles/2007/07/23/limit-by-scope
+
+=== Documentation
+
+* http://saas.rubyforge.org/limit_by_scope
+
+=== Rubyforge Project
+
+* http://rubyforge.org/projects/saas
+
+=== Usage
+
+# plan attributes:
+# - name
+# - price
+# - item_limit
+class Plan < ActiveRecord::Base
+  has_many :hosts
+end
+
+# host attributes:
+# - name
+# - plan_id
+class Host < ActiveRecord::Base
+  cattr_accessor :current
+  belongs_to :plan
+end
+
+# item attributes
+# - name
+# - host_id
+class Item < ActiveRecord::Base
+  limit_by_scope :host, :delegate => :plan, :error => 'Quota met: #{self.class.limit}, please upgrade your plan to add more.'
+  belongs_to :host
+end
+
+# for best results, use with acts_as_scoped like so:
+
+class Item < ActiveRecord::Base
+  acts_as_scoped :host
+  limit_by_scope :host, :delegate => :plan, :error => 'Your service tier only allows #{self.class.limit}, please <a href=\"/upgrade?id=#{self.host.id}\">upgrade</a> your plan to add more.'
+  belongs_to :host
+end
+
+class ApplicationController < ActionController::Base 
+...
+  before_filter :current_host
+
+  def current_host
+    Host.current = Host.find_by_name(request.subdomains.first)
+    redirect_to('/not_found.html') and return false if Host.current.nil?
+  end
+...
+
+=== Installation
+
+* script/plugin install svn://rubyforge.org/var/svn/saas/limit_by_scope/trunk/limit_by_scope
+
+== License
+
+Released under the MIT license.
+
+== Authors
+
+* Flinn Mueller - http://actsasflinn.com
