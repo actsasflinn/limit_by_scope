@@ -1,3 +1,7 @@
+= TODO
+
+Update this plugin to use named_scope
+
 = limited_by_scope
 
 This plugin adds class limit, available, and capacity methods to enforce quota limits on the creation of models.  The plugin is primarily for use with the acts_as_scoped plugin (part of the saas project) because it otherwise enforces a flat limit on the creation of limited models.  If used with the acts_as_scoped plugin you can lock users to a scope such as host or domain then ensure they can only create the number object within their plan.  The Usage section below should explain a little better.
